@@ -1,7 +1,6 @@
 function setVh() {
     // Pobiera wysokość widocznego ekranu i konwertuje ją na jednostkę vh
     let vh = window.innerHeight * 0.01;
-    console.log(vh);
     // Ustawia tę wartość jako custom property --vh
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
