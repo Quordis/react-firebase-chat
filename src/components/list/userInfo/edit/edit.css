@@ -60,6 +60,7 @@
 
 @media (max-width: 500px) {
     .edit {
+        min-width: none !important;
         width: 100% !important;
         height: 100% !important;
 
