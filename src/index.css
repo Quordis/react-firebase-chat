@@ -10,6 +10,10 @@ html {
   height: 100dvh;
 }
 
+#root {
+  height: 100%;
+}
+
 body {
   height: 100%;
   background-color: rgb(35, 35, 35);
