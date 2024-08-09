@@ -1,5 +1,5 @@
 .list {
-    height: calc(var(--vh, 1dvh) * 100);
+    height: calc(var(--vh, 1svh) * 100);
     background-color: rgba(37, 46, 63);
     display: flex;
     flex: 1;
