@@ -26,7 +26,7 @@ body {
 
 .container {
   width: 100vw;
-  height: calc(var(--vh, 1svh) * 100);
+  height: calc(var(--vh, 1vh) * 100);
   background-color: rgba(37, 46, 63, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.125);
   backdrop-filter: blur(19px) saturate(180%);
