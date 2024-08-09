@@ -7,8 +7,7 @@
 }
 
 body {
-  height: 100vh;
-  height: -webkit-fill-avaible;
+  height: 100svh;
   background-color: rgb(35, 35, 35);
   display: flex;
   align-items: center;
@@ -17,14 +16,9 @@ body {
   overflow: hidden;
 }
 
-#root {
-  height: 100%;
-
-}
-
 .container {
   width: 100vw;
-  height: 100%;
+  height: 100svh;
   background-color: rgba(37, 46, 63, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.125);
   backdrop-filter: blur(19px) saturate(180%);
