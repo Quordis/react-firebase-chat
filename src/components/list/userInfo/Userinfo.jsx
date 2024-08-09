@@ -1,0 +1,29 @@
+import { useState } from "react";
+import { useUserStore } from "../../../lib/userStore";
+import Edit from "./edit/Edit";
+import "./userInfo.css"
+
+const Userinfo = () => {
+    const [editMode, setEditMode] = useState(false); 
+    const {currentUser} = useUserStore();
+
+    const handleEdit = () => {
+        setEditMode(prev => !prev);
+    }
+    return (
+        <div className="userInfo">
+            <div className="user">
+                <img src={currentUser.avatar || "./avatar.png"} alt="avatar" />
+                <h2>{currentUser.username}</h2>
+            </div>
+            <div className="icons">
+                <img src="./more.png" alt="more" className="not-avaible"/>
+                <img src="./video.png" alt="video" className="not-avaible"/>
+                <img src="./edit.png" alt="edit" onClick={handleEdit}/>
+            </div>
+            {editMode && <Edit />}
+        </div>
+    )
+}
+
+export default Userinfo
