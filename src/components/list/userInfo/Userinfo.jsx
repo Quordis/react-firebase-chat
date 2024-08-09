@@ -21,7 +21,7 @@ const Userinfo = () => {
                 <img src="./video.png" alt="video" className="not-avaible"/>
                 <img src="./edit.png" alt="edit" onClick={handleEdit}/>
             </div>
-            {editMode && <Edit />}
+            {editMode && <Edit changeEdit={handleEdit}/>}
         </div>
     )
 }

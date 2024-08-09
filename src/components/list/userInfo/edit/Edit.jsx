@@ -7,7 +7,7 @@ import { db } from "../../../../lib/firebase";
 import { toast } from "react-toastify";
 import upload from "../../../../lib/upload";
 
-const Edit = () => {
+const Edit = (props) => {
     const {currentUser} = useUserStore();
     const [avatar, setAvatar] = useState(currentUser.avatar);
     const [username, setUsername] = useState(currentUser.username);
@@ -53,6 +53,7 @@ const Edit = () => {
 
     return (
         <div className="edit">
+            <img src="./close.png" alt="close" className="close" onClick={props.changeEdit}/>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="fileChange">
                     <img src={typeof avatar === "object" ? avatar.url : avatar} alt="avatar"/>

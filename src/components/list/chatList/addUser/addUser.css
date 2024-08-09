@@ -4,12 +4,26 @@
     padding: 30px;
     background-color: rgba(17, 25, 40, 0.8);
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+
+    .close {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: none;
+        cursor: pointer;
+    }
 
     form {
         display: flex;
@@ -37,11 +51,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 20px;
 
-        .detail {
+        .userDetail {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 5px;
 
             img {
                 width: 50px;
@@ -58,6 +73,21 @@
             color: white;
             border: none;
             cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .addUser {
+        width: 100% !important;
+        height: 100% !important;
+
+        .close {
+            display: flex !important;
+        }
+
+        form {
+            flex-direction: column;
         }
     }
 }

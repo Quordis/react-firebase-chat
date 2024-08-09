@@ -2,6 +2,10 @@
     min-width: 400px;
     width: max-content;
     height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     padding: 30px;
     background-color: rgba(17, 25, 40, 0.8);
     border-radius: 10px;
@@ -11,6 +15,16 @@
     left: 0;
     right: 0;
     margin: auto;
+
+    .close {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: none;
+        cursor: pointer;
+    }
 
     form {
         display: flex;
@@ -40,6 +54,17 @@
             color: white;
             border: none;
             cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .edit {
+        width: 100% !important;
+        height: 100% !important;
+
+        .close {
+            display: flex !important;
         }
     }
 }

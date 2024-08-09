@@ -4,7 +4,7 @@ import { useState } from "react";
 import { db } from "../../../../lib/firebase";
 import { useUserStore } from "../../../../lib/userStore";
 
-const AddUser = () => {
+const AddUser = (props) => {
     const [user, setUser] = useState(null);
 
     const {currentUser} = useUserStore();
@@ -68,12 +68,13 @@ const AddUser = () => {
 
     return (
         <div className="addUser">
+            <img src="./close.png" alt="close" className="close" onClick={props.changeAddMode}/>
             <form onSubmit={handleSearch}>
                 <input type="text" placeholder="Username" name="username" />
                 <button>Search</button>
             </form>
             {user && <div className="user">
-                <div className="detail">
+                <div className="userDetail">
                     <img src={user.avatar || "./avatar.png"} alt="avatar" />
                     <span>{user.username}</span>
                 </div>
