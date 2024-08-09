@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  height: 100vh;
+  height: 100svh;
   height: -webkit-fill-avaible;
   background-color: rgb(35, 35, 35);
   display: flex;
@@ -19,6 +19,10 @@ body {
   justify-content: center;
   color: white;
   overflow: hidden;
+}
+
+#root {
+  height: 100%;
 }
 
 .container {
