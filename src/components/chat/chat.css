@@ -1,5 +1,4 @@
 .chat {
-    height: calc(var(--vh, 1svh) * 100);
     display: flex;
     flex-direction: column;
     flex: 4;
