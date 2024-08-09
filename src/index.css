@@ -20,6 +20,10 @@ body {
   overflow: hidden;
 }
 
+#root {
+  height: 100%;
+}
+
 .container {
   width: 100vw;
   height: 100%;
