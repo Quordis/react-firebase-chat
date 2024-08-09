@@ -1,6 +1,4 @@
 .list {
-    height: 100vh;
-    height: -webkit-fill-available;
     background-color: rgba(37, 46, 63);
     display: flex;
     flex: 1;
