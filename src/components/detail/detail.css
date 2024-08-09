@@ -1,5 +1,6 @@
 .detail {
     min-width: 250px;
+    height: 100vh;
     height: -webkit-fill-available;
     flex: 1;
     display: flex;
