@@ -3,10 +3,47 @@
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     gap: 100px;
 
+    .typeContainer {
+        padding: 20px;
+        background-color: rgba(17, 25, 40, 0.2);
+        border: 2px solid rgba(17, 25, 40, 0.6);
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        position: relative;
+
+        button {
+            width: 100px;
+            background-color: transparent;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .background {
+            width: 130px;
+            height: 100%;
+            background-color: rgba(17, 25, 40, 0.6);
+            border-radius: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 0.4s;
+        }
+
+        .background.register {
+            left: 50% !important;
+        }
+    }
+
     .item {
-        flex: 1;
         display: flex;
         align-items: center;
         flex-direction: column;

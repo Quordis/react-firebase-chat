@@ -13,6 +13,18 @@ const Login = () => {
     })
 
     const [loading, setLoading] = useState(false);
+    const [login, setLogin] = useState(true);
+
+    const handleTypeChange = (e) => {
+        if (e.target.innerHTML === "Login") {
+            document.getElementsByClassName('background')[0].classList.remove('register');
+            return setLogin(true)
+        }
+        else {
+            document.getElementsByClassName('background')[0].classList.add('register');
+            return setLogin(false);
+        }
+    }
 
     const handleAvatar = e => {
         if (e.target.files[0]) {
@@ -77,16 +89,20 @@ const Login = () => {
 
     return (
         <div className="login">
-            <div className="item">
+            <div className="typeContainer">
+                <button onClick={handleTypeChange}>Login</button>
+                <button onClick={handleTypeChange}>Registration</button>
+                <div className="background"></div>
+            </div>
+            {login && <div className="item">
                 <h2>Welcome back, </h2>
                 <form onSubmit={handleLogin}>
                     <input type="email" placeholder="Email" name="email"/>
                     <input type="password" placeholder="Password" name="password"/>
                     <button disabled={loading}>{loading ? "Loading" : "Sign In"}</button>
                 </form>
-            </div>
-            <div className="separator"></div>
-            <div className="item">
+            </div>}
+            {!login && <div className="item">
             <h2>Create an Account</h2>
                 <form onSubmit={handleRegister}>
                     <label htmlFor="file">
@@ -98,7 +114,7 @@ const Login = () => {
                     <input type="password" placeholder="Password" name="password" minLength="6"/>
                     <button disabled={loading}>{loading ? "Loading" : "Sign Up"}</button>
                 </form>
-            </div>
+            </div>}
         </div>
     )
 }
