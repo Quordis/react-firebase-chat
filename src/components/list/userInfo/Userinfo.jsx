@@ -14,7 +14,7 @@ const Userinfo = () => {
         <div className="userInfo">
             <div className="user">
                 <img src={currentUser.avatar || "./avatar.png"} alt="avatar" />
-                <h2>{currentUser.username}</h2>
+                <h2 style={currentUser.username.length > 10 ? {fontSize: "22px"} : {}}>{currentUser.username}</h2>
             </div>
             <div className="icons">
                 <img src="./more.png" alt="more" className="not-avaible"/>

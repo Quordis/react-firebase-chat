@@ -21,7 +21,7 @@ const Login = () => {
     const [usernameFocus, setUsernameFocus] = useState(false);
     const [passwordFocus, setPasswordFocus] = useState(false);
 
-    window.addEventListener("focusin", (e) => {
+    const tempFocusInOnUser = window.addEventListener("focusin", (e) => {
         if (e.target.getAttribute("id") === "usernameInput") {
             return setUsernameFocus(true);
         }
@@ -31,7 +31,7 @@ const Login = () => {
         }
     })
 
-    window.addEventListener("focusout", (e) => {
+    const tempFocusOutOnUser = window.addEventListener("focusout", (e) => {
         if (e.target.getAttribute("id") === "usernameInput") {
             return setUsernameFocus(false);
         }
@@ -105,6 +105,8 @@ const Login = () => {
         
         try {
             await signInWithEmailAndPassword(auth, email, password)
+            removeEventListener("focusin", tempFocusInOnUser);
+            removeEventListener("focusout", tempFocusOutOnUser);
         } catch(err) {
             console.log(err);
             toast.error(err.message);
