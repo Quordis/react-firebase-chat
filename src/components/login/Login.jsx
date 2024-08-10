@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./login.css";
 import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -14,6 +14,32 @@ const Login = () => {
 
     const [loading, setLoading] = useState(false);
     const [login, setLogin] = useState(true);
+    
+    const [usernameText, setUsernameText] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [usernameFocus, setUsernameFocus] = useState(false);
+    const [passwordFocus, setPasswordFocus] = useState(false);
+
+    window.addEventListener("focusin", (e) => {
+        if (e.target.getAttribute("id") === "usernameInput") {
+            return setUsernameFocus(true);
+        }
+
+        if (e.target.getAttribute("id") === "passwordInput") {
+            return setPasswordFocus(true);
+        }
+    })
+
+    window.addEventListener("focusout", (e) => {
+        if (e.target.getAttribute("id") === "usernameInput") {
+            return setUsernameFocus(false);
+        }
+
+        if (e.target.getAttribute("id") === "passwordInput") {
+            return setPasswordFocus(false);
+        }
+    })
 
     const handleTypeChange = (e) => {
         if (e.target.innerHTML === "Login") {
@@ -109,9 +135,31 @@ const Login = () => {
                         <img src={avatar.url || "./avatar.png"} alt="avatar" />
                         Upload an image</label>
                     <input type="file" id="file" style={{display: "none"}} onChange={handleAvatar}/>
-                    <input type="text" placeholder="Username" name="username"/>
+                    <input 
+                        type="text" 
+                        placeholder="Username"
+                        value={usernameText} 
+                        name="username"
+                        id="usernameInput" 
+                        minLength="3" 
+                        maxLength="15" 
+                        onChange={(e) => setUsernameText(e.target.value)}/>
+                    <ul id="usernameList" style={usernameFocus ? {display: "block"} : {}}>
+                        <li className={usernameText.length >= 3 ? "right" : ""}>Minimum 3 characters</li>
+                        <li className={usernameText.length <= 15 ? "right" : ""}>Maximum 15 characters</li>
+                    </ul>
                     <input type="email" placeholder="Email" name="email"/>
-                    <input type="password" placeholder="Password" name="password" minLength="6"/>
+                    <input 
+                        type="password" 
+                        placeholder="Password"
+                        value={password} 
+                        name="password"
+                        id="passwordInput" 
+                        minLength="6"
+                        onChange={(e) => setPassword(e.target.value)}/>
+                    <ul id="passwordList" style={passwordFocus ? {display: "block"} : {}}>
+                        <li className={password.length >= 6 ? "right" : ""}>Minimum 6 characters</li>
+                    </ul>
                     <button disabled={loading}>{loading ? "Loading" : "Sign Up"}</button>
                 </form>
             </div>}

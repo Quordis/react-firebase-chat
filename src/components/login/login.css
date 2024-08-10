@@ -66,6 +66,19 @@
                 border-radius: 5px;
             }
 
+            ul {
+                display: none;
+                
+                li {
+                    font-size: 14px;
+                    color: rgb(255, 62, 62);
+                }
+
+                li.right {
+                    color: rgb(0, 188, 0) !important;
+                }
+            }
+
             label {
                 width: 100%;
                 display: flex;
@@ -99,11 +112,5 @@
                 }
             }
         }
-    }
-
-    .separator {
-        width: 2px;
-        height: 80%;
-        background-color: #dddddd35;
     }
 }
