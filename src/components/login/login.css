@@ -8,14 +8,15 @@
     gap: 100px;
 
     .typeContainer {
-        padding: 20px;
+        padding: 10px 15px;
         background-color: rgba(17, 25, 40, 0.2);
         border: 2px solid rgba(17, 25, 40, 0.6);
         border-radius: 15px;
         display: flex;
         justify-content: space-between;
         gap: 20px;
-        position: relative;
+        position: absolute;
+        top: 20px;
 
         button {
             width: 100px;
@@ -31,7 +32,7 @@
             width: 130px;
             height: 100%;
             background-color: rgba(17, 25, 40, 0.6);
-            border-radius: 15px;
+            border-radius: 12px;
             position: absolute;
             top: 0;
             left: 0;
