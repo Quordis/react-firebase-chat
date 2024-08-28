@@ -227,7 +227,7 @@ const Chat = (props) => {
                 <div className="emoji">
                     <img src="./emoji.png" alt="emoji" onClick={() => setOpen((prev) => !prev)}/>
                     <div className="picker">
-                        <EmojiPicker open={(!isCurrentUserBlocked && !isReceiverBlocked) && open} theme="dark" onEmojiClick={handleEmoji} width="200"/>
+                        <EmojiPicker open={(!isCurrentUserBlocked && !isReceiverBlocked) && open} theme="dark" onEmojiClick={handleEmoji} width="200" autoFocusSearch={false}/>
                     </div>
                 </div>
                 <button className="sendButton" onClick={handleSend} disabled={isCurrentUserBlocked || isReceiverBlocked}>Send</button>

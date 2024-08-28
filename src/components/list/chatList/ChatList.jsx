@@ -5,10 +5,12 @@ import { useUserStore } from "../../../lib/userStore";
 import { useChatStore } from "../../../lib/chatStore";
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
+import MakeGroup from "./makeGroup/MakeGroup";
 
 const ChatList = (props) => {
     const [chats, setChats] = useState([]);
     const [addMode, setAddMode] = useState(false);
+    const [makeMode, setMakeMode] = useState(false);
     const [input, setInput] = useState("");
 
     const {currentUser} = useUserStore();
@@ -16,6 +18,10 @@ const ChatList = (props) => {
 
     const handleAddMode = () => {
         setAddMode(prev => !prev);
+    }
+
+    const handleMakeMode = () => {
+        setMakeMode(prev => !prev);
     }
 
     useEffect(() => {
@@ -78,7 +84,7 @@ const ChatList = (props) => {
                 </div>
                 <div className="addContainer">
                     <div className="add" onClick={handleAddMode}>Add User</div>
-                    <div className="make">Make a Group</div>
+                    <div className="make" onClick={handleMakeMode}>Make a Group</div>
                 </div>
             </div>
             {filteredChats.map((chat) => {
@@ -97,6 +103,7 @@ const ChatList = (props) => {
                 )
             })}
             {addMode && <AddUser changeAddMode={handleAddMode}/>}
+            {makeMode && <MakeGroup changeMakeMode={handleMakeMode}/>}
         </div>
     )
 }

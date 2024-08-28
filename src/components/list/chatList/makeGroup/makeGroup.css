@@ -1,0 +1,84 @@
+.makeGroup {
+    width: max-content;
+    height: max-content;
+    padding: 30px;
+    background-color: rgba(17, 25, 40, 0.8);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    .close {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: none;
+        cursor: pointer;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+
+            img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            #fileInput {
+                display: none;
+            }
+
+            input, textarea{
+                border: none;
+                outline: none;
+                border-radius: 5px;
+                padding: 10px;
+            }
+        }
+
+        div:first-of-type {
+            align-items: center;
+            justify-content: left !important;
+            gap: 20px !important;
+        }
+
+        button {
+            height: 50px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            background-color: rgba(17, 25, 40, 0.8);
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .makeGroup {
+        width: 100% !important;
+        height: 100% !important;
+
+        .close {
+            display: flex !important;
+        }
+    }
+}
