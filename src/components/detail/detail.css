@@ -21,6 +21,11 @@
             border-radius: 50%;
             object-fit: cover;
         }
+
+        p {
+            font-size: 14px;
+           text-align: center;
+        }
     }
 
     .info {

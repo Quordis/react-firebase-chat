@@ -167,6 +167,11 @@ const Chat = (props) => {
 
     }
 
+    let userDescription = [...user?.desc];
+    if (userDescription.length > 30) {
+        userDescription = [userDescription.splice(0, 27), ".", ".", "."];
+    }
+
     return (
         <div className="chat">
             <div className="top">
@@ -175,7 +180,7 @@ const Chat = (props) => {
                     <img src={user?.avatar || "./avatar.png"} alt="avatar" />
                     <div className="texts">
                         <span>{user?.username}</span>
-                        <p>{user?.desc}</p>
+                        <p>{userDescription}</p>
                     </div>
                 </div>
                 <div className="icons">
@@ -187,15 +192,16 @@ const Chat = (props) => {
             <div className="center">
                 {chat?.messages?.map((message) => {
                   return <div className={message.senderId === currentUser?.id ? "message own" : "message"} key={message?.createdAt}>
-                  <div className="texts">
-                    {message.img && <img src={message.img} alt="image"></img>}
-                      <p>
-                          {message?.file ? <a href={message.file} target="_blank">{message.fileName}</a> : message.text}
-                      </p>
-                      <span>{timeConverter(message.createdAt)}</span>
-                  </div>
-                </div>})  
-                }
+                    {message.senderId === currentUser?.id ? "" : <img src={user?.avatar} alt="avatar" />}
+                    <div className="texts">
+                        {message.img && <img src={message.img} alt="image"></img>}
+                        <p>
+                            {message?.file ? <a href={message.file} target="_blank">{message.fileName}</a> : message.text}
+                        </p>
+                        <span>{timeConverter(message.createdAt)}</span>
+                    </div>
+                    </div>})  
+                    }
                 {img.url && <div className="message own">
                     <div className="texts">
                         <img src={img.url} alt=""></img>
@@ -221,7 +227,7 @@ const Chat = (props) => {
                 <div className="emoji">
                     <img src="./emoji.png" alt="emoji" onClick={() => setOpen((prev) => !prev)}/>
                     <div className="picker">
-                        <EmojiPicker open={(!isCurrentUserBlocked && !isReceiverBlocked) && open} onEmojiClick={handleEmoji}/>
+                        <EmojiPicker open={(!isCurrentUserBlocked && !isReceiverBlocked) && open} theme="dark" onEmojiClick={handleEmoji} width="200"/>
                     </div>
                 </div>
                 <button className="sendButton" onClick={handleSend} disabled={isCurrentUserBlocked || isReceiverBlocked}>Send</button>

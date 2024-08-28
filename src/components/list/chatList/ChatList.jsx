@@ -76,15 +76,22 @@ const ChatList = (props) => {
                     <img src="./search.png" alt="search" />
                     <input type="text" placeholder="Search" onChange={(e) => setInput(e.target.value)}/>
                 </div>
-                <img src={addMode ? "./minus.png" : "./plus.png"} alt="add" className="add" onClick={handleAddMode}/>
+                <div className="addContainer">
+                    <div className="add" onClick={handleAddMode}>Add User</div>
+                    <div className="make">Make a Group</div>
+                </div>
             </div>
             {filteredChats.map((chat) => {
+                let lastMessage = [...chat.lastMessage];
+                if (lastMessage.length > 30) {
+                    lastMessage = [lastMessage.splice(0, 27) , ".", ".", "."];
+                }
                 return (
                     <div className="item" key={chat.chatId} onClick={() => handleSelect(chat)} style={{backgroundColor: chat?.isSeen ? "transparent" : "#5183fe"}}>
                         <img src={chat.user.blocked.includes(currentUser.id) ? "./avatar.png" : chat.user.avatar || "./avatar.png"} alt="avatar" />
                         <div className="texts">
-                            <span>{chat.user.blocked.includes(currentUser.id) ? "User" : chat.user.username}</span>
-                            <p>{chat.lastMessage}</p>
+                            <span>{chat.user.username}</span>
+                            <p>{lastMessage}</p>
                         </div>
                     </div>
                 )

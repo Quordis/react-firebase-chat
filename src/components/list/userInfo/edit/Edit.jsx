@@ -60,7 +60,10 @@ const Edit = (props) => {
                 </label>
                 <input type="file" id="fileChange" style={{display: "none"}} onChange={handleAvatarChange}/>
                 <input type="text" placeholder="Username" value={username} name="username" onChange={handleNameChange} minLength="5"/>
-                <input type="text" placeholder="Description" value={desc} name="desc" onChange={handleDescChange}/>
+                <div className="descContainer">
+                    <input type="text" placeholder="Description" value={desc} name="desc" maxLength="50" onChange={handleDescChange}/>
+                    <label htmlFor="desc">max. 50 characters</label>
+                </div>
                 <button>Save</button>
             </form>
         </div>

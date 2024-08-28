@@ -46,6 +46,17 @@
             outline: none;
         }
 
+        .descContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            label {
+                align-self: flex-end;
+                font-size: 14px;
+            }
+        }
+
         button {
             min-width: 100px;
             padding: 20px;

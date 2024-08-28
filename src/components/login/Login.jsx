@@ -63,6 +63,9 @@ const Login = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
+        if (usernameText.length < 3 || usernameText.length > 15 || password.length < 6 || avatar.file === null)  {
+            return toast.warning("Something's missing...");
+        }
         setLoading(true);
         const formData = new FormData(e.target);
 
