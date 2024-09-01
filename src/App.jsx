@@ -47,7 +47,7 @@ const App = () => {
         currentUser ? (
           <>
             <List changeList={changeList} />
-            {chatId ? <Chat changeDetail={changeDetail} changeList={changeList} /> : groupChatId ? <ChatGroup /> : <ChatDefault changeList={changeList}/>}
+            {chatId ? <Chat changeDetail={changeDetail} changeList={changeList} /> : groupChatId ? <ChatGroup changeList={changeList}/> : <ChatDefault changeList={changeList}/>}
             {showDetail && <Detail changeDetail={changeDetail} />}
           </>
         ) : (<Login />)
