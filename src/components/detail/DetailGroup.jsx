@@ -34,7 +34,6 @@ const DetailGroup = (props) => {
 
     const handleMembers = () => {
         setMembers(prev => !prev);
-        console.log(filteredMembers);
     }
 
     const handleImgs = async() => {

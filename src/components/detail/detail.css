@@ -51,6 +51,29 @@
                 }
             }
 
+            .members {
+                max-height: 200px;
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                overflow-y: scroll;
+                scrollbar-width: none;
+
+                .memberItem {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
             .photos {
                 max-height: 200px;
                 margin-top: 20px;
