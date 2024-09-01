@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import "./makeGroup.css"
 import { toast } from "react-toastify";
 import { db } from "../../../../lib/firebase";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { arrayUnion, collection, doc, getDoc, onSnapshot, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { useUserStore } from "../../../../lib/userStore";
+import upload from "../../../../lib/upload";
 
 const MakeGroup = (props) => {
     const [avatar, setAvatar] = useState({
@@ -46,7 +47,9 @@ const MakeGroup = (props) => {
         })
     }
 
-    const handleAdd = () => {
+    const handleAdd = (e) => {
+        e.preventDefault();
+
         let userSearch = document.getElementById('userSearch').value;
         let user = chats.filter(chat => chat.user.id === userSearch);
         let {username} = user[0].user;
@@ -76,9 +79,10 @@ const MakeGroup = (props) => {
         
     }
 
-    const handleMake = (e) => {
+    const handleMake = async(e) => {
         e.preventDefault();
 
+        console.log(e.target)
         const formData = new FormData(e.target);
         const {groupname, groupdesc} = Object.fromEntries(formData);
 
@@ -86,7 +90,49 @@ const MakeGroup = (props) => {
             return user.id
         })
 
-        console.log(usersID);
+        usersID.push(currentUser.id)
+
+        
+        const chatRef = collection(db, "chats");
+        const userChatsRef = collection(db, "usergroupchats");
+    
+        try {
+            const newChatRef = doc(chatRef);
+            console.log(avatar.file);
+
+            const imgUrl = await upload(avatar.file, "images");
+            
+            await setDoc(newChatRef, {
+                name: groupname,
+                description: groupdesc,
+                avatar: imgUrl,
+                createdAt: serverTimestamp(),
+                messages: []
+            });
+
+            await updateDoc(doc(userChatsRef, currentUser.id), {
+                chats: arrayUnion({
+                    chatId: newChatRef.id,
+                    lastMessage: "",
+                    members: usersID,
+                    updatedAt: Date.now()
+                })
+            });
+
+            usersID.forEach(async(id) => {
+                await updateDoc(doc(userChatsRef, id), {
+                    chats: arrayUnion({
+                        chatId: newChatRef.id,
+                        lastMessage: "",
+                        members: usersID,
+                        updatedAt: Date.now()
+                    })
+            })
+
+            });
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     return (
@@ -127,7 +173,7 @@ const MakeGroup = (props) => {
                         }
                     </div>
                 </div>
-                <button>Make a Group</button>
+                <button type="submit">Make a Group</button>
             </form>
             <img src="/close.png" alt="close" className="close" onClick={props.changeMakeMode}/>
         </div>

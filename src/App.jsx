@@ -8,13 +8,16 @@ import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "./lib/firebase"
 import { useUserStore } from "./lib/userStore"
 import { useChatStore } from "./lib/chatStore"
+import { useGroupChatStore } from "./lib/groupChatStore"
 import ChatDefault from "./components/chat/ChatDefault"
+import ChatGroup from "./components/chat/ChatGroup"
 
 const App = () => {
   const user = false;
 
   const {currentUser, isLoading, fetchUserInfo} = useUserStore();
   const {chatId} = useChatStore();
+  const {groupChatId} = useGroupChatStore();
   const [showDetail, setShowDetail] = useState(false);
   const [showList, setShowList] = useState(true);
 
@@ -44,7 +47,7 @@ const App = () => {
         currentUser ? (
           <>
             <List changeList={changeList} />
-            {chatId ? <Chat changeDetail={changeDetail} changeList={changeList} /> : <ChatDefault changeList={changeList}/>}
+            {chatId ? <Chat changeDetail={changeDetail} changeList={changeList} /> : groupChatId ? <ChatGroup /> : <ChatDefault changeList={changeList}/>}
             {showDetail && <Detail changeDetail={changeDetail} />}
           </>
         ) : (<Login />)
