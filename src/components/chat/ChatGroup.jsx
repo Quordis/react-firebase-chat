@@ -193,7 +193,7 @@ const ChatGroup = (props) => {
                 <div className="icons">
                     <img src="./phone.png" alt="call" className="not-avaible"/>
                     <img src="./video.png" alt="videocall" className="not-avaible"/>
-                    <img src="./info.png" alt="info" onClick={props.changeDetail}/>
+                    <img src="./info.png" alt="info" onClick={props.changeGroupDetail}/>
                 </div>
             </div>
             <div className="center">

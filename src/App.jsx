@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Chat from "./components/chat/Chat"
 import Detail from "./components/detail/Detail"
+import DetailGroup from "./components/detail/DetailGroup"
 import List from "./components/list/List"
 import Login from "./components/login/Login"
 import Notification from "./components/notification/Notification"
@@ -19,10 +20,17 @@ const App = () => {
   const {chatId} = useChatStore();
   const {groupChatId} = useGroupChatStore();
   const [showDetail, setShowDetail] = useState(false);
+  const [showGroupDetail, setShowGroupDetail] = useState(false);
   const [showList, setShowList] = useState(true);
 
   function changeDetail() {
+    setShowGroupDetail(false);
     setShowDetail(prev => !prev);
+  }
+
+  function changeGroupDetail() {
+    setShowDetail(false);
+    setShowGroupDetail(prev => !prev);
   }
 
   function changeList() {
@@ -47,8 +55,9 @@ const App = () => {
         currentUser ? (
           <>
             <List changeList={changeList} />
-            {chatId ? <Chat changeDetail={changeDetail} changeList={changeList} /> : groupChatId ? <ChatGroup changeList={changeList}/> : <ChatDefault changeList={changeList}/>}
+            {chatId ? <Chat changeDetail={changeDetail} changeList={changeList} /> : groupChatId ? <ChatGroup changeGroupDetail={changeGroupDetail} changeList={changeList}/> : <ChatDefault changeList={changeList}/>}
             {showDetail && <Detail changeDetail={changeDetail} />}
+            {showGroupDetail && <DetailGroup changeGroupDetail={changeGroupDetail} />}
           </>
         ) : (<Login />)
       }
