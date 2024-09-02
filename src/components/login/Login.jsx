@@ -82,6 +82,7 @@ const Login = () => {
                 username,
                 email,
                 avatar: imgUrl,
+                desc: "Default",
                 id: res.user.uid,
                 blocked: []
             })
