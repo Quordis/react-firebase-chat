@@ -12,6 +12,7 @@ import { useChatStore } from "./lib/chatStore"
 import { useGroupChatStore } from "./lib/groupChatStore"
 import ChatDefault from "./components/chat/ChatDefault"
 import ChatGroup from "./components/chat/ChatGroup"
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const App = () => {
   const user = false;
@@ -62,6 +63,7 @@ const App = () => {
         ) : (<Login />)
       }
       <Notification />
+      <SpeedInsights />
     </div>
   )
 }
