@@ -15,6 +15,8 @@ Na potrzeby szybkiego wglądu przygotowałem trzy konta:
 Każde z nich ma takie samo hasło
 - 123456.
 
+Link do aplikacji: react-firebase-chat-nnlx-damians-projects-8425b058.vercel.app
+
 # EN
 Firstly made with LamaDev tutorial, but I've added many new functionalities, such as:
   - Added responsivity,
@@ -31,3 +33,5 @@ For quick reference, I have prepared three accounts:
 
 Each of them has the same password
 - 123456.
+
+Application link: react-firebase-chat-nnlx-damians-projects-8425b058.vercel.app
